@@ -91,15 +91,15 @@ plt.figure()
 plt.plot(fpr, tpr, label=f"AUC = {roc_auc_score(y_test, y_prob):.2f}")
 
 # 기준선 (랜덤 모델) 추가: y=x 대각선
-plt.plot([0, 1], [0, 1], 'k--')
-
-# 플롯 제목, 축 레이블, 범례, 그리드 설정
-plt.title("Random Forest ROC Curve")
-plt.xlabel("FPR")          # False Positive Rate
-plt.ylabel("TPR")          # True Positive Rate (Recall)
-plt.legend()
-plt.grid()
-plt.show()                 # 그래프 출력
+# plt.plot([0, 1], [0, 1], 'k--')
+#
+# # 플롯 제목, 축 레이블, 범례, 그리드 설정
+# plt.title("Random Forest ROC Curve")
+# plt.xlabel("FPR")          # False Positive Rate
+# plt.ylabel("TPR")          # True Positive Rate (Recall)
+# plt.legend()
+# plt.grid()
+# plt.show()                 # 그래프 출력
 
 # Feature Importance 시각화
 
@@ -110,13 +110,17 @@ importances = rf_best.feature_importances_
 indices = importances.argsort()[::-1][:10]
 
 # 중요도 바 차트 시각화
-plt.figure(figsize=(8, 6))
+sns.set_context("paper", font_scale=0.8) #폰트 스케일을 종이 출력 수준으로 낮추기
+plt.figure(figsize=(6, 4))
 
 # 상위 10개 특성에 대한 중요도 막대그래프 (X축: 중요도, Y축: 특성 이름)
 sns.barplot(x=importances[indices], y=X.columns[indices])
 
 # 차트 제목 추가
 plt.title("Top 10 Feature Importance (RF)")
+plt.xlabel("Importance", fontsize=10)
+plt.ylabel("", fontsize=10)
+plt.tight_layout() #여백 딱 맞게
 
 # 차트 출력
 plt.show()

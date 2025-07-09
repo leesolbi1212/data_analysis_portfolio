@@ -10,7 +10,6 @@ from scipy.stats import randint
 import matplotlib.pyplot as plt
 
 # 1. 데이터 로드 및 전처리
-# ------------------------------------------------------
 df = pd.read_csv('assets/train.csv')  # Kaggle Titanic 데이터 로드
 df.info()
 

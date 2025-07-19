@@ -58,27 +58,3 @@ for i in range(160):
     plot_image(i, predictions[i], y_test, X_test[i])
 plt.tight_layout()
 plt.show()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

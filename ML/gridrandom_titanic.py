@@ -11,7 +11,7 @@ import matplotlib.pyplot as plt
 
 # 1. 데이터 로드 및 전처리
 df = pd.read_csv('assets/train.csv')  # Kaggle Titanic 데이터 로드
-df.info()
+# df.info()
 
 # 성별을 숫자로 변환 (male: 0, female: 1)
 df['Sex'] = df['Sex'].map({'male': 0, 'female': 1})
@@ -75,9 +75,22 @@ random_search = RandomizedSearchCV(
 )
 random_search.fit(X_train, y_train)
 
+
+
 # 최적 하이퍼파라미터 및 정확도 출력
 print("Best RandomSearch Params:", random_search.best_params_)
 print("Best RandomSearch Accuracy:", random_search.best_score_)
+
+import time
+
+start = time.time()
+grid_search.fit(X_train, y_train)
+print("GridSearchCV 소요 시간:", time.time() - start, "초")
+
+start = time.time()
+random_search.fit(X_train, y_train)
+print("RandomizedSearchCV 소요 시간:", time.time() - start, "초")
+
 
 # 5. GridSearch vs RandomizedSearch 성능(정확도) 비교 막대그래프 시각화
 scores = [
@@ -90,6 +103,17 @@ plt.ylabel("테스트셋 정확도")
 plt.title("하이퍼파라미터 튜닝 비교")
 plt.ylim(0, 1)
 plt.show()
+
+grid_test_acc = accuracy_score(
+    y_test,
+    grid_search.best_estimator_.predict(X_test)
+)
+rand_test_acc = accuracy_score(
+    y_test,
+    random_search.best_estimator_.predict(X_test)
+)
+print("GridSearch Test Accuracy:", grid_test_acc)
+print("RandomSearch Test Accuracy:", rand_test_acc)
 
 
 

@@ -1,4 +1,4 @@
-# layer2_improved.py
+# layer2_improved.py (완료)
 # sigmoid 활성화 함수 기반 이진 분류 모델 (입력 정규화, 하이퍼파라미터 튜닝, EarlyStopping 적용)
 
 from tensorflow.keras.models import Sequential               # 케라스 순차 모델 클래스

@@ -15,7 +15,7 @@ import matplotlib.pyplot as plt # 시각화
 import numpy as np # 수치 연산
 import PIL # 이미지 처리
 import tensorflow as tf
-from tensorflow import keras
+from tensorflow import keras # TF 고수준 API
 from tensorflow.keras import layers, models
 from tensorflow.keras.models import Sequential
 import os
@@ -23,6 +23,8 @@ import os
 # 1. 데이터 다운로드 및 경로 설정
 dataset_url = "https://storage.googleapis.com/mledu-datasets/cats_and_dogs_filtered.zip"
 zip_path = tf.keras.utils.get_file('cats_and_dogs_filtered.zip', origin=dataset_url, extract=True)
+# URL(dataset_url)에서 ZIP 파일을 다운로드하고, 지정된 캐시 폴더(~/.keras/datasets/)에 저장
+# extract=True 옵션으로 자동 압축 해제
 base_dir = os.path.join(os.path.dirname(zip_path), 'cats_and_dogs_filtered_extracted/cats_and_dogs_filtered')
 
 # 훈련 데이터셋, 검증 데이터셋 경로
@@ -30,8 +32,8 @@ train_dir = os.path.join(base_dir, 'train')
 validation_dir = os.path.join(base_dir, 'validation')
 
 # 2. 훈련/검증 데이터셋 생성
-BATCH_SIZE = 32
-IMG_SIZE = (180, 180)
+BATCH_SIZE = 32 # 한번에 모델에 넣을 이미지 개수 (32장)
+IMG_SIZE = (180, 180) # 모델 입력으로 사용할 가로×세로 크기 (180×180 픽셀)
 
 train_ds = tf.keras.preprocessing.image_dataset_from_directory(
     train_dir,
@@ -125,28 +127,5 @@ plt.legend()
 plt.tight_layout()
 plt.show()
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+# 9) 모델 저장 후 실제로 테스트 해볼 준비!
+model.save('cat_dog_classifier.h5')

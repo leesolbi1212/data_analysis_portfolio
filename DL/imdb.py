@@ -1,4 +1,4 @@
-# imdb.py
+# imdb.py (완료)
 # imdb 데이터셋
 
 import numpy as np
@@ -27,22 +27,22 @@ print(f"✅ 평균 리뷰 길이: {np.mean(review_lengths):.2f}")
 print(f"✅ 최대 리뷰 길이: {np.max(review_lengths)}")
 
 # 4. 리뷰 길이 히스토그램
-plt.figure(figsize=(10, 5))
-plt.hist(review_lengths, bins=50, color='skyblue', edgecolor='black')
-plt.title('리뷰 길이 분포')
-plt.xlabel('리뷰 길이 (단어 수)')
-plt.ylabel('리뷰 개수')
-plt.grid(True)
-plt.show()
+# plt.figure(figsize=(10, 5))
+# plt.hist(review_lengths, bins=50, color='skyblue', edgecolor='black')
+# plt.title('리뷰 길이 분포')
+# plt.xlabel('리뷰 길이 (단어 수)')
+# plt.ylabel('리뷰 개수')
+# plt.grid(True)
+# plt.show()
 
 # 5. 라벨 분포 시각화
-plt.figure(figsize=(6, 4))
-sns.countplot(x=y_train)
-plt.title('긍정 / 부정 리뷰 개수')
-plt.xlabel('리뷰 라벨 (0=부정, 1=긍정)')
-plt.ylabel('개수')
-plt.xticks([0, 1], ['부정', '긍정'])
-plt.show()
+# plt.figure(figsize=(6, 4))
+# sns.countplot(x=y_train)
+# plt.title('긍정 / 부정 리뷰 개수')
+# plt.xlabel('리뷰 라벨 (0=부정, 1=긍정)')
+# plt.ylabel('개수')
+# plt.xticks([0, 1], ['부정', '긍정'])
+# plt.show()
 
 # 6. 단어 사전 불러오기
 word_index = imdb.get_word_index()
@@ -57,13 +57,15 @@ decoded_reviews = []
 for i in range(1000):  # 상위 1000개만
     decoded = ' '.join([index_word.get(idx, '') for idx in X_train[i]])
     decoded_reviews.append(decoded)
+    print(i, decoded)
 
 all_words = ' '.join(decoded_reviews)
 
+
 # 8. 워드클라우드 생성
-wc = WordCloud(width=800, height=400, background_color='white').generate(all_words)
-plt.figure(figsize=(12, 6))
-plt.imshow(wc, interpolation='bilinear')
-plt.axis('off')
-plt.title("IMDB 리뷰에서 자주 등장하는 단어")
-plt.show()
+# wc = WordCloud(width=800, height=400, background_color='white').generate(all_words)
+# plt.figure(figsize=(12, 6))
+# plt.imshow(wc, interpolation='bilinear')
+# plt.axis('off')
+# plt.title("IMDB 리뷰에서 자주 등장하는 단어")
+# plt.show()

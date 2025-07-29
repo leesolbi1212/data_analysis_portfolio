@@ -1,4 +1,4 @@
-# rnn_imdb.py
+# rnn_imdb.py (완료)
 # RNN 모델
 
 # IMDB 데이터
@@ -59,22 +59,3 @@ plt.plot(history['val_accuracy'], label='val accuracy')
 plt.legend()
 plt.title('정확도 변화 추이')
 plt.show()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

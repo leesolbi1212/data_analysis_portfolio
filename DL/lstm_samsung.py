@@ -74,7 +74,7 @@ while last_date < target_date:
         last_date += timedelta(days=1)
     future_dates.append(last_date) # 평일 날짜만 추가
     next_seq = np.append(forecast_sequence[0, 1:, 0], next_pred) # 시퀀스 갱신
-    forecast_sequence = next_seq.reshape(1, sequence_len, 1) # 다시 reshape
+    forecast_sequence = next_seq.reshape(1, sequence_len, 1) # 다시 reshape1q1`
 
 # 예측 결과를 역정규화
 predicted_prices = scaler.inverse_transform(

@@ -43,6 +43,10 @@ image_paths = [
     'assets/7.jpg',
     'assets/9.jpg',
     'assets/11.jpg',
+    'assets/13.jpg',
+    'assets/14.jpg',
+    'assets/15.jpg',
+
 ]
 
 # 5) 예측 실행 및 출력

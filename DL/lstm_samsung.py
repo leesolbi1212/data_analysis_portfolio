@@ -1,4 +1,4 @@
-# lstm_samsung.py
+# lstm_samsung.py (완료)
 # LSTM모델을 이용한 삼성전자 주가 예측
 
 # 라이브러리
